@@ -1,9 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Hello from './components/hello'
+import { browserHistory } from 'react-router'
+import { BrowserRouter as Router } from 'react-router-dom'
+import FullPage from './components/common/full-page'
 
-console.log(document.getElementById('app'))
-ReactDOM.render(
-  <Hello name="World" />,
+ReactDOM.hydrate(
+  <Router history={browserHistory}>
+    <FullPage />
+  </Router>,
   document.getElementById('app'),
 )
