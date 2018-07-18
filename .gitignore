@@ -251,6 +251,7 @@ ModelManifest.xml
 # PhpStorm
 
 /.idea
+*/.idea
 
 # ************************* CUSTOM SETTINGS **************************
 
@@ -267,9 +268,11 @@ ModelManifest.xml
 /bin
 /obj
 /node_modules
+*/node_modules
 **/*/_V
 **/*/Templates
 **/*/Libraries
+**/*/wwwroot
 
 
 # Files
