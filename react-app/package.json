@@ -1,6 +1,7 @@
 {
   "path": "^0.12.7",
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
@@ -8,12 +9,18 @@
     "babel-preset-stage-2": "^6.24.1",
     "cpx": "^1.5.0",
     "express": "^4.16.3",
+    "json-server": "^0.14.0",
     "npm-run-all": "^4.1.3",
     "prop-types": "^15.6.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-router-redux": "^4.0.8",
+    "redux": "^4.0.0",
+    "redux-axios-middleware": "^4.0.0",
+    "redux-thunk": "^2.3.0",
     "rimraf": "^2.6.2",
     "webpack": "^4.16.0",
     "webpack-dev-server": "^3.1.4",
@@ -26,16 +33,19 @@
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-jsx-a11y": "^6.1.0",
     "eslint-plugin-react": "^7.10.0",
+    "redux-devtools-extension": "^2.13.5",
     "webpack-cli": "^3.0.8"
   },
   "scripts": {
     "build-client": "webpack --config webpack.client.js",
     "build-server": "webpack --config webpack.server.js",
-    "start": "webpack-dev-server --config webpack.client.js --hot  --content-base public --history-api-fallback",
+    "start:dev": "webpack-dev-server --config webpack.client.js --hot  --content-base public --history-api-fallback",
     "server": "nodemon build/serverbundle.js",
     "dev:all": "npm-run-all --serial build-server build-client server",
     "cleanwwwroot": "rimraf ../WebApi/wwwroot/*",
     "copytowwwroot": "cpx public/**/* ../WebApi/wwwroot",
-    "deploy": "npm-run-all --serial build-client cleanwwwroot copytowwwroot"
+    "deploy": "npm-run-all --serial build-client cleanwwwroot copytowwwroot",
+    "jsonserver": "nodemon jsonserver.js",
+    "start": "npm-run-all --parallel start:dev jsonserver"
   }
 }
